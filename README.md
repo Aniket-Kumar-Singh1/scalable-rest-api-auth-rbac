@@ -56,3 +56,20 @@ New users register with the `user` role by default. To grant admin access (admin
 ```sql
 UPDATE users SET role = 'admin' WHERE email = 'you@example.com';
 ```
+
+---
+
+## 🚀 Scalability Note
+
+This architecture is designed to scale horizontally:
+1. **Stateless Backend:** The FastAPI application uses stateless JWT authentication, meaning any API node can serve any user request. You can run multiple instances behind a load balancer (e.g., Nginx, HAProxy, AWS ALB).
+2. **Database Connection Pooling:** SQLAlchemy connects to PostgreSQL. In production, tools like PgBouncer can be introduced between the API and DB to handle connection pooling efficiently.
+3. **Caching Readiness:** Frequent read queries (like task listings) or rate-limiting can easily be augmented by introducing Redis.
+4. **Microservices Path:** Tasks and Auth are cleanly separated in routers. As the application grows, authentication could be extracted into a dedicated Identity Service (microservice).
+
+---
+
+## 📝 API Documentation
+
+- **Swagger UI (Interactive):** Included natively with FastAPI at `http://localhost:8000/docs`.
+- **Postman Collection:** A pre-configured `postman_collection.json` file is located in the root of the repository. Import it directly into Postman to test Authentication workflows and CRUD operations natively.
