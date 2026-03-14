@@ -34,7 +34,7 @@ async function request(url, options = {}) {
 /* ---- Auth ---- */
 
 export async function registerUser(payload) {
-  return request('/register', {
+  return request('/auth/register', {
     method: 'POST',
     body: JSON.stringify(payload),
   });
@@ -43,7 +43,7 @@ export async function registerUser(payload) {
 export async function loginUser(email, password) {
   // Use form-encoded body for OAuth2PasswordRequestForm compatibility
   const body = new URLSearchParams({ username: email, password });
-  const res = await fetch(`${BASE}/login`, {
+  const res = await fetch(`${BASE}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body,
@@ -57,7 +57,7 @@ export async function loginUser(email, password) {
 /* ---- Tasks ---- */
 
 export async function getTasks() {
-  return request('/tasks');
+  return request('/tasks/');
 }
 
 export async function getTask(id) {
@@ -65,7 +65,7 @@ export async function getTask(id) {
 }
 
 export async function createTask(payload) {
-  return request('/tasks', {
+  return request('/tasks/', {
     method: 'POST',
     body: JSON.stringify(payload),
   });
