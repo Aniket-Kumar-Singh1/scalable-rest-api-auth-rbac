@@ -72,4 +72,4 @@ This architecture is designed to scale horizontally:
 ## 📝 API Documentation
 
 - **Swagger UI (Interactive):** Included natively with FastAPI at `http://localhost:8000/docs`.
-- **Postman Collection:** A pre-configured `postman_collection.json` file is located in the root of the repository. Import it directly into Postman to test Authentication workflows and CRUD operations natively.
+- **Postman Collection:** A pre-configured `postman_collection.json` file is located in the root of the repository. Import it directly into Postman to test Authentication workflows and CRUD operations natively. 
